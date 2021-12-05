@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import styled from 'styled-components/macro'
 
-import { API_KEY } from 'shared/variables';
+// import { API_KEY } from 'shared/variables';
 
 type weatherData = {
   lat: number,
@@ -34,14 +34,14 @@ export const CurrentWeather: React.FC = () => {
   // const [longitude, setLongitude] = useState('-94.04')
   // const [latitude, setLatitude] = useState('33.44')
 
-  const API_URL = `https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=minutely,hourly,daily&appid=${API_KEY}`
+  // const API_URL = `https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=minutely,hourly,daily&appid=${API_KEY}`
+  const API_URL2 = `https://`
 
   const fetchCurrentWeather: any = useCallback(async () => {
-
     try {
       setError(null)
       setIsLoading(true)
-      const res = await fetch(API_URL)
+      const res = await fetch(API_URL2)
       const data = await res.json()
       if (!res.ok) {
         throw Error('Could not fetch data')
@@ -53,8 +53,7 @@ export const CurrentWeather: React.FC = () => {
       setIsLoading(false)
       console.log(err)
     }
-
-  }, [API_URL])
+  }, [API_URL2])
 
 
   useEffect(() => {

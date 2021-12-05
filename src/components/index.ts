@@ -4,3 +4,6 @@ export * from './Main';
 export * from './CurrentWeather';
 export * from './Forecast';
 export * from './Footer';
+export * from './Login';
+export * from './SignUp';
+export * from './FormButton';
