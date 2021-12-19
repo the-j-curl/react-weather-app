@@ -8,3 +8,12 @@ export const convertLocalTime = (time: number): string => {
   });
   return localTimeString;
 };
+
+export const convertLocalDay = (day: number): string => {
+  const date = new Date(day * 1000);
+  const dayDateString = date.toLocaleDateString([], {
+    weekday: 'short',
+    day: 'numeric',
+  });
+  return dayDateString;
+};
