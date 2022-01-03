@@ -62,7 +62,12 @@ export const Main: React.FC = () => {
 
   if (error) {
     return (
-      <p>{error.message}</p>
+      <MainWrapper>
+        <ErrorWrapper>
+          <ErrorText>Sorry, weather data not available. Please try again later</ErrorText>
+          <ErrorMessage>Error: {error.message}</ErrorMessage>
+        </ErrorWrapper>
+      </MainWrapper>
     )
   }
 
@@ -74,8 +79,7 @@ export const Main: React.FC = () => {
 
   return (
     <MainWrapper>
-      <p>Main</p>
-      <CurrentWeather weather={weather ? weather : error} error={error} status={status} />
+      <CurrentWeather weather={weather ? weather : error} />
       <Forecast forecastData={weather ? weather?.daily : error} />
     </MainWrapper>
   )
@@ -83,4 +87,22 @@ export const Main: React.FC = () => {
 
 const MainWrapper = styled.main`
   border: 1px dotted #000;
+`;
+
+const ErrorWrapper = styled.div`
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ErrorText = styled.p`
+  font-size: 18px;
+  margin: 18px 0 5px 0;
+`;
+
+const ErrorMessage = styled.p`
+  font-size: 16px;
+  margin: 5px 0 18px 0;
 `;

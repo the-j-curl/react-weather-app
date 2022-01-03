@@ -14,6 +14,16 @@ export const convertLocalDay = (day: number): string => {
   const dayDateString = date.toLocaleDateString([], {
     weekday: 'short',
     day: 'numeric',
+    month: 'short',
   });
   return dayDateString;
+};
+
+export const trimTimeZoneString = (text: string): string => {
+  const index = text.indexOf('/') || 0;
+  return text.slice(index + 1);
+};
+
+export const capitaliseFirstLetter = (text: string): string => {
+  return text[0]?.toUpperCase() + text.slice(1);
 };

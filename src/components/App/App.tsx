@@ -7,16 +7,14 @@ import './App.css';
 export const App = () => {
   return (
     <BrowserRouter>
-      <div>
-        <Header title={'The Weather App'} />
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          {/* <Navigate to="/" /> */}
-        </Routes>
-        <Footer />
-      </div>
+      <Header title={'The Weather App'} />
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        {/* <Navigate to="/" /> */}
+      </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
