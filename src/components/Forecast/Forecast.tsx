@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { convertLocalTime, convertLocalDay } from 'shared/variables';
-import { dailyForecast } from 'shared/types';
+import { Description, TextSmall } from 'components/CurrentWeather'
+
+import { convertLocalTime, convertLocalDay, getDay, capitaliseFirstLetter } from 'shared/variables';
+// import { dailyForecast } from 'shared/types';
 
 type Props = {
   forecastData: any[]
@@ -10,17 +12,18 @@ type Props = {
 
 export const Forecast: React.FC<Props> = ({ forecastData }) => {
 
+  const currentDate = new Date().getDate();
+
   return (
     <ForecastContainer>
-      <h3>8 day forecast</h3>
       <ForecastWrapper>
         {forecastData && forecastData.map((weather, index) => (
           <TestContainer key={index}>
-            <p>{convertLocalDay(weather.dt)}</p>
-            <p>Sunrise: {convertLocalTime(weather.sunrise)} | Sunset: {convertLocalTime(weather.sunset)}</p>
-            <p>{weather.weather[0]?.description}</p>
-            <img src={`http://openweathermap.org/img/wn/${weather.weather[0]?.icon}@2x.png`} alt='weather icon' />
-            <p>Min:{Math.floor(weather.temp.min)}c | Max:{Math.floor(weather.temp.max)}c</p>
+            <H4>{currentDate !== getDay(weather.dt) ? convertLocalDay(weather.dt) : 'Today'}</H4>
+            {/* <p>Sunrise: {convertLocalTime(weather.sunrise)} | Sunset: {convertLocalTime(weather.sunset)}</p> */}
+            <ImgSmall src={`http://openweathermap.org/img/wn/${weather.weather[0]?.icon}@2x.png`} alt='weather icon' />
+            <DescriptionSmall>{capitaliseFirstLetter(weather.weather[0]?.description)}</DescriptionSmall>
+            <TextSmall>Min: {Math.floor(weather.temp.min)}&deg;C | Max: {Math.floor(weather.temp.max)}&deg;C</TextSmall>
           </TestContainer>
         ))}
       </ForecastWrapper>
@@ -29,19 +32,33 @@ export const Forecast: React.FC<Props> = ({ forecastData }) => {
 }
 
 const ForecastContainer = styled.section`
-  border: 1px solid green;
+  margin: 0 0 20px 0;
 `;
 
 const TestContainer = styled.div` // TODO: Rename component
-  border: 1px solid black;
+  border-right: 1px solid #c0bcbc;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 220px;
+  min-width: 160px;
+  padding: 8px 0;
 `;
 
 const ForecastWrapper = styled.div`
   display: flex;
   overflow: scroll;
+  border-top: 1px dotted #c0bcbc;
+`;
+
+const H4 = styled.h4`
+  margin: 0;
+`;
+
+const ImgSmall = styled.img`
+  width: 75px;
+`;
+
+const DescriptionSmall = styled(Description)`
+  font-size: 16px;
 `;
