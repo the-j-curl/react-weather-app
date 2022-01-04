@@ -19,6 +19,14 @@ export const convertLocalDay = (day: number): string => {
   return dayDateString;
 };
 
+export const getDay = (day: number): number => {
+  const date = new Date(day * 1000);
+  const dayOfMonth = date.toLocaleDateString([], {
+    day: 'numeric',
+  });
+  return +dayOfMonth;
+};
+
 export const trimTimeZoneString = (text: string): string => {
   const index = text.indexOf('/') || 0;
   return text.slice(index + 1);

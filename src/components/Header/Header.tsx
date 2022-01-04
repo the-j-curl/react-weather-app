@@ -8,18 +8,18 @@ type HeaderProps = {
 
 export const Header: React.FC<HeaderProps> = ({ title }) => {
   return (
-    <HearderContainer>
-      <NavLink to="/">
+    <HeaderContainer>
+      <StyledLink to="/">
         <MainHeading>{title}</MainHeading>
-      </NavLink>
-      <NavLink to="/login">
+      </StyledLink>
+      <StyledLink to="/login">
         <NavText>Login</NavText>
-      </NavLink>
-    </HearderContainer>
+      </StyledLink>
+    </HeaderContainer>
   )
 }
 
-const HearderContainer = styled.header`
+const HeaderContainer = styled.header`
   background-color: #3a3aa8;
   color: #fff;
   display: flex;
@@ -29,10 +29,12 @@ const HearderContainer = styled.header`
 
 const MainHeading = styled.h1`
   color: #fff;
+`;
+
+const StyledLink = styled(NavLink)`
   text-decoration: none;
 `;
 
 const NavText = styled.p`
   color: #fff;
-  text-decoration: none;
 `;

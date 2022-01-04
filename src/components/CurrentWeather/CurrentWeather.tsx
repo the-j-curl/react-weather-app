@@ -6,20 +6,21 @@ import { weatherData } from 'shared/types';
 
 type Props = {
   weather: weatherData
+  status: string | null // Use this to display error message to user if user location has not been recieved 
 }
 
-export const CurrentWeather: React.FC<Props> = ({ weather }) => {
+export const CurrentWeather: React.FC<Props> = ({ weather, status }) => {
 
   return (
     <CurrentContainer>
       <HeaderText>{weather && trimTimeZoneString(weather.timezone)}</HeaderText>
-      <SmallText>Sunrise: {weather?.current.sunrise && convertLocalTime(weather.current.sunrise)} | Sunset: {weather?.current.sunset && convertLocalTime(weather?.current.sunset)}</SmallText>
+      <TextSmall>Sunrise: {weather?.current.sunrise && convertLocalTime(weather.current.sunrise)} | Sunset: {weather?.current.sunset && convertLocalTime(weather?.current.sunset)}</TextSmall>
       <RegularText>Next Hour</RegularText>
       <TemperatureWrapper>
         <Image src={weather?.current.weather[0]?.icon && `http://openweathermap.org/img/wn/${weather?.current.weather[0]?.icon}@2x.png`} alt='current weather' />
         <TempWrapper>
           <HeaderText>{weather?.current.temp && Math.floor(weather?.current.temp)}&deg;C</HeaderText>
-          <SmallText>Feels like {Math.floor(weather?.current.feels_like)}&deg;C</SmallText>
+          <TextSmall>Feels like {Math.floor(weather?.current.feels_like)}&deg;C</TextSmall>
         </TempWrapper>
       </TemperatureWrapper>
       <Description>{weather && capitaliseFirstLetter(weather.current.weather[0]?.description)}</Description>
@@ -43,7 +44,7 @@ const HeaderText = styled.h2`
   margin: 2px 0;
 `;
 
-const SmallText = styled.p`
+export const TextSmall = styled.p`
   font-size: 14px;
   margin: 0;
 `;
@@ -53,7 +54,6 @@ const TemperatureWrapper = styled.div`
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
-  border: 2px solid teal;
 `;
 
 const TempWrapper = styled.div`
@@ -67,7 +67,7 @@ const Image = styled.img`
   width: 120px;
 `;
 
-const Description = styled.p`
+export const Description = styled.p`
   margin: 6px 0;
   font-size: 20px;
 `;

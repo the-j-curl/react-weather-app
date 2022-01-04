@@ -79,14 +79,13 @@ export const Main: React.FC = () => {
 
   return (
     <MainWrapper>
-      <CurrentWeather weather={weather ? weather : error} />
+      <CurrentWeather weather={weather ? weather : error} status={status ? status : null} />
       <Forecast forecastData={weather ? weather?.daily : error} />
     </MainWrapper>
   )
 }
 
 const MainWrapper = styled.main`
-  border: 1px dotted #000;
 `;
 
 const ErrorWrapper = styled.div`
