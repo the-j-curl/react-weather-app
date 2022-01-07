@@ -46,9 +46,14 @@ const TestContainer = styled.div` // TODO: Rename component
 `;
 
 const ForecastWrapper = styled.div`
+  border-top: 1px dotted #c0bcbc;
   display: flex;
   overflow: scroll;
-  border-top: 1px dotted #c0bcbc;
+  -ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+	scroll-behavior: smooth;
+	::-webkit-scrollbar {
+		display: none;
 `;
 
 const H4 = styled.h4`
