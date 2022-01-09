@@ -7,3 +7,5 @@ export * from './Footer';
 export * from './Login';
 export * from './SignUp';
 export * from './FormButton';
+export * from './SideNav';
+export * from './Hamburger';

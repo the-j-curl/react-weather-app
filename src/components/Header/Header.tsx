@@ -1,19 +1,25 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
 import styled from 'styled-components/macro';
+
+import { SideNav } from 'components';
+import { StyledLink } from '../../styles/globalStyles';
 
 type HeaderProps = {
   title: string
 }
 
 export const Header: React.FC<HeaderProps> = ({ title }) => {
+  const [isSideNavOpen, setIsSideNavOpen] = useState(false);
+
+  const toggleSideNav = () => {
+    setIsSideNavOpen(!isSideNavOpen)
+  };
+
   return (
     <HeaderContainer>
+      <SideNav isOpen={isSideNavOpen} toggleSideNav={toggleSideNav} />
       <StyledLink to="/">
         <MainHeading>{title}</MainHeading>
-      </StyledLink>
-      <StyledLink to="/login">
-        <NavText>Login</NavText>
       </StyledLink>
     </HeaderContainer>
   )
@@ -28,13 +34,5 @@ const HeaderContainer = styled.header`
 `;
 
 const MainHeading = styled.h1`
-  color: #fff;
-`;
-
-const StyledLink = styled(NavLink)`
-  text-decoration: none;
-`;
-
-const NavText = styled.p`
   color: #fff;
 `;
