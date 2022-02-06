@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { Description, TextSmall } from 'components/CurrentWeather'
+import { DescriptionText, H4, TextSmall } from '../../styles/globalStyles';
 
-import { convertLocalTime, convertLocalDay, getDay, capitaliseFirstLetter } from 'shared/variables';
+import { convertLocalDay, getDay, capitaliseFirstLetter } from 'shared/variables';
 // import { dailyForecast } from 'shared/types';
 
 type Props = {
@@ -56,14 +56,10 @@ const ForecastWrapper = styled.div`
 		display: none;
 `;
 
-const H4 = styled.h4`
-  margin: 0;
-`;
-
 const ImgSmall = styled.img`
   width: 75px;
 `;
 
-const DescriptionSmall = styled(Description)`
+const DescriptionSmall = styled(DescriptionText)`
   font-size: 16px;
 `;

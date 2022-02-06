@@ -60,6 +60,10 @@ const HamburgerBar = styled(FaBars)`
   position: fixed;
   top: 10px;
   left: 10px;
+
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 // const CloseButton = styled.button`
@@ -73,6 +77,11 @@ const CloseIcon = styled(FaTimes)`
   position: fixed;
   top: 10px;
   left: 10px;
+  
+  :hover {
+    cursor: pointer;
+  }
+  
 `;
 
 const NavUser = styled.div`
